@@ -3,7 +3,7 @@
         <Search />
         <span v-if="loading">Loading...</span>
         <Gallery :galleries="galleries" :isFav="false"/>
-        <span class="btn" @click.prevent.stop="getAnotherPhotos">
+        <span :disabled="loading" class="btn" @click.prevent.stop="getAnotherPhotos">
             <svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g filter="url(#filter0_d_11_28)">
                 <rect x="4" y="4" width="49" height="49" rx="8" fill="white"/>
