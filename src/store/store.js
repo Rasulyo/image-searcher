@@ -1,6 +1,7 @@
 import { createStore } from 'vuex';
 import { useNotification } from "@kyvg/vue3-notification";
 import apiClient from '../api/api';
+import ClIENT_ID from '../constant/constant';
 
 const { notify }  = useNotification()
 export default createStore({
@@ -36,13 +37,13 @@ export default createStore({
     async searchImages({ commit }, query) {
       commit('setSearchQuery', query);
       commit('setIsSearchLoading', true);
-      const res = await apiClient.get(`/search/photos?query=${query}&client_id=${import.meta.env.VITE_ACCESS_KEY}&per_page=8`);
+      const res = await apiClient.get(`/search/photos?query=${query}&client_id=${ClIENT_ID}&per_page=8`);
       commit('setSearchResults', res.data.results);
       commit('setIsSearchLoading', false);
     },
     async getRandomImages({ commit }) {
       commit('setIsSearchLoading', true);
-      const res = await apiClient.get('/photos/random' + `?client_id=${import.meta.env.VITE_ACCESS_KEY}&count=8`);
+      const res = await apiClient.get('/photos/random' + `?client_id=${ClIENT_ID}&count=8`);
       commit('setImages', res.data);
       commit('setIsSearchLoading', false);
     },
